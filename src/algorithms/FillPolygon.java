@@ -24,7 +24,6 @@ public class FillPolygon {
 			while(!intstk.empty()){
 				int tempY = intstk.pop();
 				int tempX = intstk.pop();
-				System.out.println("Y is "+tempY +" and X is "+tempX);
 				if(tempY-1 >= 0 && data[tempY-1][tempX] == 0){ //Pixel above. If no Border mark and Push to stack
 					data[tempY-1][tempX] = 1;
 					intstk.push(tempX);

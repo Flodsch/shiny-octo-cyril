@@ -1,9 +1,10 @@
 package algorithms;
 
 import objects.Matrix;
+import objects.Point;
 
 public class BresenhamLine {
-	
+
 	private Matrix matrix;
 
 	public BresenhamLine(Matrix matrix) {
@@ -12,7 +13,13 @@ public class BresenhamLine {
 	}
 
 	// set point between 0 and 399
-	public void drawLine(int x1, int y1, int x2, int y2) {
+	public void drawLine(Point point1, Point point2) {
+		int xOffset = (matrix.getWidth() / 2);
+		int yOffset = (matrix.getHeight() / 2);
+		int x1 = point1.getxCoordinate();
+		int y1 = point1.getyCoordinate();
+		int x2 = point2.getxCoordinate();
+		int y2 = point2.getyCoordinate();
 		// Matrix.setPoint(x1, y1);
 		// Matrix.setPoint(x2, y2);
 		int xIncrement = 1, yIncrement = 1, dy = 2 * (y2 - y1), dx = 2 * (x1 - x2), tmp;
@@ -39,11 +46,11 @@ public class BresenhamLine {
 					e += dx;
 					y += yIncrement;
 				}
-				if (x < matrix.getWidth() && y < matrix.getHeight() && x >= 0 && y >= 0) {
+				
 
-					System.out.println(x + " " + y);
-					matrix.setPoint(x, y);
-				}
+					// System.out.println(x + " " + y);
+					matrix.setPoint(x + xOffset, yOffset-y);
+				
 				x += xIncrement;
 			}
 		} else // ( dy >= -dx ) Steigung >=1
@@ -62,10 +69,10 @@ public class BresenhamLine {
 					x += xIncrement;
 				}
 
-				if (x < matrix.getWidth() && y < matrix.getHeight() && x >= 0 && y >= 0) {
-					System.out.println(x + " " + y);
-					matrix.setPoint(x, y);
-				}
+				
+					// System.out.println(x + " " + y);
+					matrix.setPoint(x + xOffset, yOffset-y);
+				
 				y += yIncrement;
 			}
 		}

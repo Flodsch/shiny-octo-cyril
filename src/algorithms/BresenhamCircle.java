@@ -1,9 +1,10 @@
 package algorithms;
 
 import objects.Matrix;
+import objects.Point;
 
 public class BresenhamCircle {
-	
+
 	private Matrix matrix;
 
 	public BresenhamCircle(Matrix matrix) {
@@ -11,11 +12,11 @@ public class BresenhamCircle {
 		this.matrix = matrix;
 	}
 
-	public void drawCircle(int radius) {
+	public void drawCircle(int radius, Point middlepoint) {
 		int distance = 3 - (2 * radius);
 		int x = 0;
 		int y = radius;
-		setPoint(x, y);
+		setPoint(x, y, middlepoint);
 
 		while (x < y) {
 			if (distance < 0) {
@@ -30,37 +31,22 @@ public class BresenhamCircle {
 				}
 			}
 			x++;
-			setPoint(x, y);
+			setPoint(x, y, middlepoint);
 
 		}
 	}
 
-	private void setPoint(int x, int y) {
+	private void setPoint(int x, int y, Point middlepoint) {
 		int xOffset = (matrix.getWidth() / 2);
 		int yOffset = (matrix.getHeight() / 2);
-		System.out.println("X Value is: " + (x + xOffset));
-		System.out.println("Y Value is: " + (y + yOffset));
-		if ((x + xOffset) <= matrix.getWidth() - 1 && (yOffset + y) <= matrix.getHeight() - 1 && (x + xOffset) >= 0
-				&& (yOffset + y) >= 0) {
-			matrix.setPoint(x + xOffset, yOffset + y);
-			matrix.setPoint(yOffset + y, x + xOffset);
-		}
-		if (-x + xOffset <= matrix.getWidth() - 1 && yOffset + y <= matrix.getHeight() - 1 && -x + xOffset >= 0
-				&& yOffset + y >= 0) {
-			matrix.setPoint(-x + xOffset, yOffset + y);
-			matrix.setPoint(yOffset + y, -x + xOffset);
-		}
-		if (x + xOffset <= matrix.getWidth() - 1 && yOffset - y <= matrix.getHeight() - 1 && x + xOffset >= 0
-				&& yOffset - y >= 0) {
-			matrix.setPoint(x + xOffset, yOffset - y);
-			matrix.setPoint(yOffset - y, x + xOffset);
-		}
-		if (-x + xOffset <= matrix.getWidth() - 1 && yOffset - y <= matrix.getHeight() - 1 && -x + xOffset >= 0
-				&& yOffset - y >= 0) {
-			matrix.setPoint(-x + xOffset, yOffset - y);
-			matrix.setPoint(yOffset - y, -x + xOffset);
-		}
-
+		matrix.setPoint(x + xOffset + middlepoint.getxCoordinate(), yOffset + y - middlepoint.getyCoordinate());
+		matrix.setPoint(-x + xOffset + middlepoint.getxCoordinate(), yOffset + y - middlepoint.getyCoordinate());
+		matrix.setPoint(x + xOffset + middlepoint.getxCoordinate(), yOffset - y - middlepoint.getyCoordinate());
+		matrix.setPoint(-x + xOffset + middlepoint.getxCoordinate(), yOffset - y - middlepoint.getyCoordinate());
+		matrix.setPoint(yOffset - y + middlepoint.getxCoordinate(), -x + xOffset - middlepoint.getyCoordinate());
+		matrix.setPoint(yOffset + y + middlepoint.getxCoordinate(), x + xOffset - middlepoint.getyCoordinate());
+		matrix.setPoint(yOffset + y + middlepoint.getxCoordinate(), -x + xOffset - middlepoint.getyCoordinate());
+		matrix.setPoint(yOffset - y + middlepoint.getxCoordinate(), x + xOffset - middlepoint.getyCoordinate());
 	}
 
 }

@@ -1,5 +1,6 @@
 package algorithms;
 import objects.Matrix;
+import objects.Point;
 
 public class MatrixOperations {
 	
@@ -12,42 +13,39 @@ public class MatrixOperations {
 		this.matrix = matrix;
 	}
 	
-	public void slide(int x, int y){
-		double [][] slideArray = {{1,0,0},{0,1,0},{x,y,1}};
+	public Point slide(int x, int y, Point point){
+		double [][] slideArray = {{1,0,x},{0,1,y},{0,0,1}};
+		return this.transform(point, slideArray);
 	}
 	
-	public void rotate(double angle, int point){
-		double [][] rotationArray = {{Math.cos(angle),-Math.sin(angle),0},{Math.sin(angle),Math.cos(angle),0},{0,0,1}};
-		
+	public Point rotate(double angle, Point point){
+		double [][] rotationArray = {{Math.cos(Math.toRadians(angle)),-(Math.sin(Math.toRadians(angle))),0},{Math.sin(Math.toRadians(angle)),Math.cos(Math.toRadians(angle)),0},{0,0,1}};
+		return this.transform(point, rotationArray);
 	}
 	
-	public void scale(int xPercent, int yPercent){
+	public Point scale(double xPercent, double yPercent, Point point){
 		double [][] scaleArray = {{(double)(xPercent/100),0,0},{0,(double)(yPercent/100),0},{0,0,1}};
+		return this.transform(point, scaleArray);
+	}
+	
+	//Multiplies 3x3 Matrix -> Untested
+	public double [][] multiplyMatrix(double [][] matrixOne, double [][] matrixTwo){
+		double [][] result = new double[3][3];
+		for(int i = 0; i<3;i++){
+			for(int j = 0; j < 3;j++){
+				result[i][j] = matrixOne[i][0] * matrixTwo[0][j] + matrixOne[i][1] * matrixTwo[1][j] + matrixOne[i][2] * matrixTwo[2][j];
+			}
+		}
+		return result;
 	}
 	
 	// Offsets between 1 and Matrix Width or Matrix Height
-	public void setNewDrawingMatrix(int xOffset, int yOffset){
+	public Point transform(Point middlepoint, double[][]transformationArray){
 		//TODO: If Offsets are in range
-		
-		for(int i = 0; i < matrix.getWidth(); i++){
-			for(int j = 0; j < matrix.getHeight(); j++){
-				int x = i - xOffset;
-				int y = yOffset - j;
-				int z = 0;
-				multiplyAndDraw(x, y, z);				
-			}
-		}
-	}
-	
-	
-	
-	private void multiplyAndDraw(int x, int y, int z){
-		
-//multiply matrix		
-		if (x < matrix.getWidth() && y < matrix.getHeight() && y >= 0 && x >= 0) {
-			matrix.setPoint(x, y);
-		}
-		
+		int newxValue = (int)(transformationArray[0][0] * middlepoint.getxCoordinate() + transformationArray[0][1] * middlepoint.getyCoordinate() + transformationArray[0][2]);
+		int newyValue = (int)(transformationArray[1][0] * middlepoint.getxCoordinate() + transformationArray[1][1] * middlepoint.getyCoordinate() + transformationArray[1][2]);
+		return new Point(newxValue, newyValue);
+		//System.out.println("Old Value: " + i +" "+  j + "New Value: " + (middlepoint.getyCoordinate() - newyValue) +" "+  (newxValue+middlepoint.getxCoordinate()));
 	}
 	
 	private void resetToIdentityMatrix(){

@@ -32,7 +32,7 @@ public class Panel extends JPanel {
 			for(int j=0; j<matrix.getHeight(); j++) {
 				if(matrix.getPoint(j, i) == 1) {
 					g2d.setColor(Color.BLACK);
-					g2d.drawLine(i, j, i, j);
+					g2d.drawLine(j,i,j,i);
 				}
 			}
 		}
