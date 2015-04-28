@@ -1,5 +1,7 @@
 package main;
 
+import javax.swing.plaf.SliderUI;
+
 import algorithms.BresenhamCircle;
 import algorithms.FillPolygon;
 import algorithms.MatrixOperations;
@@ -13,7 +15,7 @@ import renderer.Panel;
 public class Main {
 
 	public static void main(String[] args) {
-		final int SIZE = 400;
+		final int SIZE = 600;
 		Matrix matrix = new Matrix(SIZE, SIZE);
 		
 		//public static Matrix m = new Matrix(SIZE, SIZE);
@@ -35,10 +37,13 @@ public class Main {
 		bc.drawCircle(50, testing );
 		FillPolygon fp = new FillPolygon(matrix);
 		//fp.fill(210, 20);
-		fp.fill(290, 200);
+		fp.fill(new Point(40,0));
+		
+		Point testRotate = new Point(10,10);
+		testRotate = mo.rotate(180, testRotate);
 		//testing = mo.scale(150, 150, testing);
-		System.out.println(testing.getxCoordinate());
-		System.out.println(testing.getyCoordinate());
+		System.out.println(testRotate.getxCoordinate());
+		System.out.println(testRotate.getyCoordinate());
 		//mo.rotate(25, new Point(200,200));
 		/*
 		NewtonInterpolation ni = new NewtonInterpolation();
@@ -48,6 +53,9 @@ public class Main {
 		*/
 		Panel drawingPanel = new Panel(matrix);
 		new Frame(drawingPanel);
+		
+		//drawingPanel.slide(000, 0);
+		drawingPanel.rotate(90, new Point(0, 0));
 		
 	}
 

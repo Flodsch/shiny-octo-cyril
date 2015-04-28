@@ -19,7 +19,7 @@ public class MatrixOperations {
 	}
 	
 	public Point rotate(double angle, Point point){
-		double [][] rotationArray = {{Math.cos(Math.toRadians(angle)),-(Math.sin(Math.toRadians(angle))),0},{Math.sin(Math.toRadians(angle)),Math.cos(Math.toRadians(angle)),0},{0,0,1}};
+		double [][] rotationArray = {{Math.round(Math.cos(Math.toRadians(angle))),-Math.round((Math.sin(Math.toRadians(angle)))),0},{Math.round(Math.sin(Math.toRadians(angle))),Math.round(Math.cos(Math.toRadians(angle))),0},{0,0,1}};
 		return this.transform(point, rotationArray);
 	}
 	
@@ -40,7 +40,7 @@ public class MatrixOperations {
 	}
 	
 	// Offsets between 1 and Matrix Width or Matrix Height
-	public Point transform(Point middlepoint, double[][]transformationArray){
+	private Point transform(Point middlepoint, double[][]transformationArray){
 		//TODO: If Offsets are in range
 		int newxValue = (int)(transformationArray[0][0] * middlepoint.getxCoordinate() + transformationArray[0][1] * middlepoint.getyCoordinate() + transformationArray[0][2]);
 		int newyValue = (int)(transformationArray[1][0] * middlepoint.getxCoordinate() + transformationArray[1][1] * middlepoint.getyCoordinate() + transformationArray[1][2]);
@@ -60,6 +60,10 @@ public class MatrixOperations {
 		operationArray[2][2] = 1;
 	}
 	
+	
+	public Point transform(Point middlepoint){
+		return null;
+	}
 	
 
 }
