@@ -36,7 +36,7 @@ public class Panel extends JPanel {
 		//g2d.drawline(x, y, x, y);
 		for(int x=0; x<originMatrix.getWidth(); x++) {
 			for(int y=0; y<originMatrix.getHeight(); y++) {
-				if(originMatrix.getPoint(y, x) == 1) {
+				if(originMatrix.getPoint(x,y) == 1) {
 					System.out.println("Index in Matrix" + x + " " + y);
 					int xValue = x - middlepoint.getxCoordinate();
 					int yValue = middlepoint.getyCoordinate() - y;
@@ -47,7 +47,7 @@ public class Panel extends JPanel {
 					System.out.println("Point to print" + printxValue + " " + printyValue);
 					if (printxValue < originMatrix.getWidth() && printyValue < originMatrix.getHeight() && printyValue >= 0 && printxValue >= 0) {
 						g2d.setColor(Color.BLACK);
-						g2d.drawLine(printyValue,printxValue,printyValue,printxValue);
+						g2d.drawLine(printxValue,printyValue,printxValue,printyValue);
 						
 					}
 				}

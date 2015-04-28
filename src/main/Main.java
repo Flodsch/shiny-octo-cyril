@@ -55,8 +55,11 @@ public class Main {
 		ni.newton(f, x);
 		*/
 		bl.drawLine(new Point(100,100), new Point(100,-100));
+		bc.drawCircle(50, new Point(50,0));
 		Panel drawingPanel = new Panel(matrix);
-		drawingPanel.scale(200, 200);
+		drawingPanel.rotate(180);
+		//drawingPanel.scale(150, 150);
+		//drawingPanel.slide(50, 50);
 		new Frame(drawingPanel);
 		
 		//drawingPanel.slide(0, 0);
