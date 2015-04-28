@@ -29,11 +29,13 @@ public class MatrixOperations {
 	}
 	
 	//Multiplies 3x3 Matrix -> Untested
-	public double [][] multiplyMatrix(double [][] matrixOne, double [][] matrixTwo){
+	public double [][] multiplyMatrix(double [][] a, double [][] b){
 		double [][] result = new double[3][3];
-		for(int i = 0; i<3;i++){
-			for(int j = 0; j < 3;j++){
-				result[i][j] = matrixOne[i][0] * matrixTwo[0][j] + matrixOne[i][1] * matrixTwo[1][j] + matrixOne[i][2] * matrixTwo[2][j];
+		for(int i = 0; i<3; i++){
+			for(int j = 0; j < 3; j++){
+				for(int k=0; k < 3; k++) {
+					result[i][j] = result[i][j] + a[i][k] * b[k][j];
+				}
 			}
 		}
 		return result;
