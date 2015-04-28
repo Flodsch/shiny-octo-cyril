@@ -17,21 +17,24 @@ public class Main {
 	public static void main(String[] args) {
 		final int SIZE = 600;
 		Matrix matrix = new Matrix(SIZE, SIZE);
+		MatrixOperations mo = new MatrixOperations(matrix);
+		BresenhamLine bl = new BresenhamLine(matrix);
+		BresenhamCircle bc = new BresenhamCircle(matrix);
 		
 		//public static Matrix m = new Matrix(SIZE, SIZE);
+		/*
 		
-		BresenhamLine bl = new BresenhamLine(matrix);
 		bl.drawLine(new Point(-200,-200), new Point(200,200));
 		bl.drawLine(new Point(-200,200), new Point(200,-200));
 		bl.drawLine(new Point(50,200), new Point(50,-200));
 		
-		BresenhamCircle bc = new BresenhamCircle(matrix);
+		
 		Point testMiddlepoint= new Point(50,0);
 		bc.drawCircle(50, new Point(0,0));
 		bc.drawCircle(50, testMiddlepoint );
 		
 		
-		MatrixOperations mo = new MatrixOperations(matrix);
+		
 		Point testing = new Point(60,60);
 		testing=mo.rotate(180, testMiddlepoint);
 		bc.drawCircle(50, testing );
@@ -45,17 +48,35 @@ public class Main {
 		System.out.println(testRotate.getxCoordinate());
 		System.out.println(testRotate.getyCoordinate());
 		//mo.rotate(25, new Point(200,200));
-		/*
+		
 		NewtonInterpolation ni = new NewtonInterpolation();
 		double[] f = {40.7, 50.9};
 		double[] x = {90.3, 66.6};
 		ni.newton(f, x);
 		*/
+		bl.drawLine(new Point(100,100), new Point(100,-100));
 		Panel drawingPanel = new Panel(matrix);
+		drawingPanel.scale(200, 200);
 		new Frame(drawingPanel);
 		
-		//drawingPanel.slide(000, 0);
-		drawingPanel.rotate(90, new Point(0, 0));
+		//drawingPanel.slide(0, 0);
+		
+		//drawingPanel.rotate(90, new Point(0, 0));
+		//drawingPanel.slide(200, 15);
+		//drawingPanel.rotate(30);
+		
+		
+		
+		//mo.scale(150, 150);
+		/*
+		Point testpunkt = new Point(100,150);
+		mo.rotate(90);
+		testpunkt = mo.transform(testpunkt);
+		System.out.println(testpunkt.getxCoordinate() + " " + testpunkt.getyCoordinate());
+		int xValue = testpunkt.getxCoordinate() + 300;
+		int yValue = -testpunkt.getyCoordinate() + 300;
+		System.out.println(xValue + " " + yValue);
+		*/
 		
 	}
 
