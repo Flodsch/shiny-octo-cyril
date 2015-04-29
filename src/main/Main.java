@@ -7,6 +7,7 @@ import algorithms.FillPolygon;
 import algorithms.MatrixOperations;
 import algorithms.BresenhamLine;
 import algorithms.NewtonInterpolation;
+import algorithms.SplineInterpolation;
 import objects.Matrix;
 import objects.Point;
 import renderer.Frame;
@@ -15,11 +16,19 @@ import renderer.Panel;
 public class Main {
 
 	public static void main(String[] args) {
+
 		final int SIZE = 600;
 		Matrix matrix = new Matrix(SIZE, SIZE);
+		/*
 		MatrixOperations mo = new MatrixOperations(matrix);
 		BresenhamLine bl = new BresenhamLine(matrix);
 		BresenhamCircle bc = new BresenhamCircle(matrix);
+		*/
+		
+		NewtonInterpolation newtonInterpolation = new NewtonInterpolation(matrix);
+		double[] x = {-1, 1, 2, 50};
+		double[] y = {0, 2, 4, 60};
+		newtonInterpolation.interpolate(x, y);
 		
 		//public static Matrix m = new Matrix(SIZE, SIZE);
 		/*
@@ -54,14 +63,17 @@ public class Main {
 		double[] x = {90.3, 66.6};
 		ni.newton(f, x);
 		*/
+		/*
 		bl.drawLine(new Point(100,100), new Point(100,-100));
 		bc.drawCircle(50, new Point(50,0));
+		*/
 		Panel drawingPanel = new Panel(matrix);
+		/*
 		drawingPanel.rotate(180);
 		//drawingPanel.scale(150, 150);
 		//drawingPanel.slide(50, 50);
+		 */
 		new Frame(drawingPanel);
-		
 		//drawingPanel.slide(0, 0);
 		
 		//drawingPanel.rotate(90, new Point(0, 0));

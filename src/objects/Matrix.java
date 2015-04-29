@@ -45,8 +45,8 @@ public class Matrix {
 	public void setPointByCoordinates(Point point){
 		int x = point.getxCoordinate();
 		int y = point.getyCoordinate();
-		if (x < (getWidth()/2) && y < (getHeight()/2) && y >= -(getHeight()/2) && x >= -(getWidth()/2)) {
-			this.matrix[y][x] = 1;
+		if(x<=width/2 && x>=-width/2 && y<=width/2 && y>=-width/2) {
+			this.matrix[width/2-y][x+width/2] = 1;
 		}
 	}
 	

@@ -37,14 +37,14 @@ public class Panel extends JPanel {
 		for(int x=0; x<originMatrix.getWidth(); x++) {
 			for(int y=0; y<originMatrix.getHeight(); y++) {
 				if(originMatrix.getPoint(x,y) == 1) {
-					System.out.println("Index in Matrix" + x + " " + y);
+					//System.out.println("Index in Matrix" + x + " " + y);
 					int xValue = x - middlepoint.getxCoordinate();
 					int yValue = middlepoint.getyCoordinate() - y;
-					System.out.println("Coordinate" + xValue + " " + yValue);
+					//System.out.println("Coordinate" + xValue + " " + yValue);
 					Point drawingPoint = mo.transform(new Point(xValue,yValue));
 					int printxValue = drawingPoint.getxCoordinate() + middlepoint.getxCoordinate();
 					int printyValue = -drawingPoint.getyCoordinate() + middlepoint.getyCoordinate();
-					System.out.println("Point to print" + printxValue + " " + printyValue);
+					//System.out.println("Point to print" + printxValue + " " + printyValue);
 					if (printxValue < originMatrix.getWidth() && printyValue < originMatrix.getHeight() && printyValue >= 0 && printxValue >= 0) {
 						g2d.setColor(Color.BLACK);
 						g2d.drawLine(printxValue,printyValue,printxValue,printyValue);
