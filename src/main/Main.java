@@ -2,6 +2,7 @@ package main;
 
 import javax.swing.plaf.SliderUI;
 
+import algorithms.Bezier;
 import algorithms.BresenhamCircle;
 import algorithms.FillPolygon;
 import algorithms.MatrixOperations;
@@ -20,6 +21,7 @@ public class Main {
 		MatrixOperations mo = new MatrixOperations(matrix);
 		BresenhamLine bl = new BresenhamLine(matrix);
 		BresenhamCircle bc = new BresenhamCircle(matrix);
+		Bezier bz = new Bezier(matrix);
 		
 		//public static Matrix m = new Matrix(SIZE, SIZE);
 		/*
@@ -54,10 +56,18 @@ public class Main {
 		double[] x = {90.3, 66.6};
 		ni.newton(f, x);
 		*/
-		bl.drawLine(new Point(100,100), new Point(100,-100));
-		bc.drawCircle(50, new Point(50,0));
+		
+		
+		
+		//bl.drawLine(new Point(100,100), new Point(100,-100));
+		//bc.drawCircle(50, new Point(50,0));
+		bz.addPoint(new Point(-200,-100));
+		bz.addPoint(new Point(-50,100));
+		bz.addPoint(new Point(100,80));
+		bz.addPoint(new Point(150,-50));
+		bz.draw();
 		Panel drawingPanel = new Panel(matrix);
-		drawingPanel.rotate(180);
+		//drawingPanel.rotate(180);
 		//drawingPanel.scale(150, 150);
 		//drawingPanel.slide(50, 50);
 		new Frame(drawingPanel);

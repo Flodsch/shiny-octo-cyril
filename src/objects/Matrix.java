@@ -46,7 +46,7 @@ public class Matrix {
 		int x = point.getxCoordinate();
 		int y = point.getyCoordinate();
 		if (x < (getWidth()/2) && y < (getHeight()/2) && y >= -(getHeight()/2) && x >= -(getWidth()/2)) {
-			this.matrix[y][x] = 1;
+			this.matrix[(getHeight()/2)-y][x+(getWidth()/2)] = 1;
 		}
 	}
 	
