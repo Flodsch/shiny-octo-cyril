@@ -40,7 +40,7 @@ public class Bezier {
 			double yhelp = tempY.get(0);
 			int x = (int)xhelp;
 			int y = (int)yhelp;
-			System.out.println("Koordinaten sind: "+ x +" "+y);
+			//System.out.println("Koordinaten sind: "+ x +" "+y);
 			matrix.setPointByCoordinates(new Point(x,y));
 
 		}

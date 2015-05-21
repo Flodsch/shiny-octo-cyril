@@ -8,7 +8,6 @@ import algorithms.FillPolygon;
 import algorithms.MatrixOperations;
 import algorithms.BresenhamLine;
 import algorithms.NewtonInterpolation;
-import algorithms.SplineInterpolation;
 import objects.Matrix;
 import objects.Point;
 import renderer.Frame;
@@ -20,20 +19,46 @@ public class Main {
 
 		final int SIZE = 600;
 		Matrix matrix = new Matrix(SIZE, SIZE);
-		/*
+
 		MatrixOperations mo = new MatrixOperations(matrix);
 		BresenhamLine bl = new BresenhamLine(matrix);
 		BresenhamCircle bc = new BresenhamCircle(matrix);
-<<<<<<< HEAD
+		FillPolygon fp = new FillPolygon(matrix);
+
 		Bezier bz = new Bezier(matrix);
-=======
-		*/
+
 		
 		NewtonInterpolation newtonInterpolation = new NewtonInterpolation(matrix);
 		double[] x = {-1, 1, 2, 50};
 		double[] y = {0, 2, 4, 60};
+		
+		
+		//Presentation
+		
+		
+		bc.drawCircle(150, new Point(50,50));
+		
+		//fp.fill(new Point(49,50));
+		
 		newtonInterpolation.interpolate(x, y);
->>>>>>> origin/master
+		
+		
+		bz.addPoint(new Point(-200,-100));
+		bz.addPoint(new Point(-50,100));
+		bz.addPoint(new Point(100,80));
+		bz.addPoint(new Point(150,-50));
+		bz.draw();
+		
+		
+		
+		Panel drawingPanel = new Panel(matrix);
+		
+		drawingPanel.rotate(30);
+		drawingPanel.scale(150, 120);
+		drawingPanel.slide(200, 200);
+		
+		
+		
 		
 		//public static Matrix m = new Matrix(SIZE, SIZE);
 		/*
@@ -68,28 +93,20 @@ public class Main {
 		double[] x = {90.3, 66.6};
 		ni.newton(f, x);
 		*/
-<<<<<<< HEAD
+
 		
 		
 		
 		//bl.drawLine(new Point(100,100), new Point(100,-100));
 		//bc.drawCircle(50, new Point(50,0));
-		bz.addPoint(new Point(-200,-100));
-		bz.addPoint(new Point(-50,100));
-		bz.addPoint(new Point(100,80));
-		bz.addPoint(new Point(150,-50));
-		bz.draw();
-		Panel drawingPanel = new Panel(matrix);
+		
 		//drawingPanel.rotate(180);
-=======
 		/*
 		bl.drawLine(new Point(100,100), new Point(100,-100));
 		bc.drawCircle(50, new Point(50,0));
 		*/
-		Panel drawingPanel = new Panel(matrix);
 		/*
 		drawingPanel.rotate(180);
->>>>>>> origin/master
 		//drawingPanel.scale(150, 150);
 		//drawingPanel.slide(50, 50);
 		 */
